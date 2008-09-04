@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Example: Website Left Nav With Submenus Built From Markup (YUI Library)</title>
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/fonts/fonts-min.css">
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/grids/grids-min.css">
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/base/base-min.css">
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/datatable/assets/skins/sam/datatable.css">        
+        <!-- Standard reset, fonts and grids -->
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/reset-fonts-grids/reset-fonts-grids.css">
+        <!-- CSS for Menu -->
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/menu/assets/skins/sam/menu.css"> 
+        <!-- Page-specific styles -->
+
+        <!-- Dependency source files -->
+        <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+        <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/container/container_core.js"></script>
+
+
+<style type="text/css">
+/*margin and padding on body element
+  can introduce errors in determining
+  element position and are not recommended;
+  we turn them off as a foundation for YUI
+  CSS treatments. */
+body {
+	margin:0;
+	padding:0;
+}
+</style>
+
+        <style type="text/css">
+            div.yui-b p {
+                margin: 0 0 .5em 0;
+                color: #999;
+            }
+            
+            div.yui-b p strong {
+                font-weight: bold;
+                color: #000;
+            }
+
+            div.yui-b p em {
+                color: #000;
+            }            
+            
+            h1 {
+                font-weight: bold;
+                margin: 0 0 1em 0;
+                padding: .25em .5em;
+                background-color: #ccc;
+            }
+
+            #productsandservices {
+                position: static;
+            }
+
+
+			/*
+				For IE 6: trigger "haslayout" for the anchor elements in the root Menu by 
+				setting the "zoom" property to 1.  This ensures that the selected state of 
+				MenuItems doesn't get dropped when the user mouses off of the text node of 
+				the anchor element that represents a MenuItem's text label.
+			*/
+
+			#productsandservices .yuimenuitemlabel {
+				_zoom: 1;
+			}
+
+			#productsandservices .yuimenu .yuimenuitemlabel {
+				_zoom: normal;
+			}
+
+        </style>
+
+
+
+
+        <!-- Menu source file -->
+
+        <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/menu/menu.js"></script>
+
+
+        <!-- Page-specific script -->
+
+        <script type="text/javascript">
+
+            /*
+                 Initialize and render the Menu when its elements are ready 
+                 to be scripted.
+            */
+            
+            YAHOO.util.Event.onContentReady("productsandservices", function () {
+            
+                /*
+                     Instantiate a Menu:  The first argument passed to the 
+                     constructor is the id of the element in the page 
+                     representing the Menu; the second is an object literal 
+                     of configuration properties.
+                */
+
+                var oMenu = new YAHOO.widget.Menu("productsandservices", { 
+                                                        position: "static", 
+                                                        hidedelay:  750, 
+                                                        lazyload: true });
+            
+                /*
+                     Call the "render" method with no arguments since the 
+                     markup for this Menu instance is already exists in the page.
+                */
+            
+                oMenu.render();            
+            
+            });
+
+        </script>
+
+    </head>
+    <body class="yui-skin-sam" id="yahoo-com">
+
+        <div id="doc" class="yui-t1">
+            <div id="hd">
+                <!-- start: your content here -->
+
+                    <%= render(:partial => "shared/top_menu.html.erb") %>
+        
+                <!-- end: your content here -->
+
+            </div>
+            <div id="bd">
+
+                <!-- start: primary column from outer template -->
+                <div id="yui-main">
+                    <div class="yui-b">
+                        <!-- start: stack grids here -->
+						<p style="color: green"><%= flash[:notice] %></p>
+						<%= yield %>
+<!--                                
+                        <p><strong>NOTE:</strong> <em>This example demonstrates how to add submenus to a menu using existing markup.</em></p>
+						
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas sit amet metus. Nunc quam elit, posuere nec, auctor in, rhoncus quis, dui. Aliquam erat volutpat. Ut dignissim, massa sit amet dignissim cursus, quam lacus feugiat dolor, id aliquam leo tortor eget odio. Pellentesque orci arcu, eleifend at, iaculis sit amet, posuere eu, lorem. Aliquam erat volutpat. Phasellus vulputate. Vivamus id erat. Nulla facilisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Nunc gravida. Ut euismod, tortor eget convallis ullamcorper, arcu odio egestas pede, ut ornare urna elit vitae mauris. Aenean ullamcorper eros a lacus. Curabitur egestas tempus lectus. Donec et lectus et purus dapibus feugiat. Sed sit amet diam. Etiam ipsum leo, facilisis ac, rutrum nec, dignissim quis, tellus. Sed eleifend.</p>
+-->
+                        <!-- end: stack grids here -->
+                    </div>
+                </div>
+                <!-- end: primary column from outer template -->
+					<%= render(:partial => "shared/left_menu.html.erb") %>
+                <!-- start: secondary column from outer template -->
+
+                                <!-- end: secondary column from outer template -->
+
+            </div>
+            <div id="ft">
+				<br>
+				<%= render(:partial => "shared/footer.html.erb") %>
+<!--                <p>FOOTER: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas sit amet metus. Nunc quam elit, posuere nec, auctor in, rhoncus quis, dui. Aliquam erat volutpat. Ut dignissim, massa sit amet dignissim cursus, quam lacus feugiat.</p>
+-->
+            </div>
+        </div>
+        
+    </body>
+</html>
+

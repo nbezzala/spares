@@ -1,0 +1,23 @@
+<h1>New part</h1>
+
+<% form_for(@part) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :category_id %><br />
+    <%= select("part", "category_id", Category.find(:all).collect {|c| [ c.name, c.id ] }, { :include_blank => false }) %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', parts_path %>

@@ -1,0 +1,38 @@
+<p>
+  <b>Name:</b>
+  <%=h @company.name %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%=h @company.website %>
+</p>
+
+<p>
+  <b>Company type:</b>
+  <%=h @company.company_type %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @company.status %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @company.description %>
+</p>
+
+<p>
+  <b>Created by:</b>
+  <%=h @company.created_by.login %>
+</p>
+
+<p>
+  <b>Updated by:</b>
+  <%=h @company.updated_by.login %>
+</p>
+
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

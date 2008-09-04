@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @part.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @part.description %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @part.category.name %>
+</p>
+
+<p>
+  <b>Created by:</b>
+  <%=h @part.created_by.login %>
+</p>
+
+<p>
+  <b>Updated by:</b>
+  <%=h @part.updated_by.login %>
+</p>
+
+
+<%= link_to 'Edit', edit_part_path(@part) %> |
+<%= link_to 'Back', parts_path %>

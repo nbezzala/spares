@@ -1,0 +1,90 @@
+<!-- only for data tables -->
+<script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/dragdrop/dragdrop-min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/element/element-beta-min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/datasource/datasource-beta-min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/datatable/datatable-beta-min.js"></script>
+
+<!--begin custom header content for this example-->
+<style type="text/css">
+/* custom styles for this example */
+.yui-skin-sam .yui-dt-liner { white-space:nowrap; }
+</style>
+<!--end custom header content for this example-->
+
+<div id="basic"></div>
+
+
+<script type="text/javascript">
+    YAHOO.util.Event.addListener(window, "load", function() {
+        YAHOO.example.EnhanceFromMarkup = new function() {
+        var myColumnDefs = [
+            {key:"Name", label:"Name", sortable:true},
+            {key:"Description",label:"Description", sortable:true},
+            {key:"Category",label:"Category", sortable:true},
+			{key:"Created by",label:"Created by", sortable:true},
+			{key:"Updated by",label:"Updated By", sortable:true},
+            {key:"Show",label:"Show", sortable:false},
+            {key:"Edit",label:"Edit", sortable:false},
+            {key:"Delete",label:"Delete", sortable:false}
+        ];
+
+        this.parseNumberFromCurrency = function(sString) {
+            // Remove dollar sign and make it a float
+            return parseFloat(sString.substring(1));
+        };
+
+        this.myDataSource = new YAHOO.util.DataSource(YAHOO.util.Dom.get("parts"));
+        this.myDataSource.responseType = YAHOO.util.DataSource.TYPE_HTMLTABLE;
+        this.myDataSource.responseSchema = {
+            fields: [{key:"Name"},
+                    {key:"Description"},
+                    {key:"Category"},
+					{key:"Created by"},
+					{key:"Updated by"},
+                    {key:"Show"},
+                    {key:"Edit"},
+                    {key:"Delete"}
+            ]
+        };
+
+        this.myDataTable = new YAHOO.widget.DataTable("markup", myColumnDefs, this.myDataSource,
+                {caption:"All Parts",
+                sortedBy:{key:"due",dir:"desc"}}
+        );
+    };
+});
+
+</script>
+
+
+<h1>Listing parts</h1>
+
+<div id="markup">
+	<table id="parts">
+<!--
+	  <tr>
+	    <th>Name</th>
+	    <th>Description</th>
+	    <th>Category</th>
+	    <th>Created by</th>
+	    <th>Updated by</th>
+	  </tr>
+-->	
+	<% for part in @parts %>
+	  <tr>
+	    <td><%=h part.name %></td>
+	    <td><%=h part.description %></td>
+	    <td><%=h part.category.name %></td>
+	    <td><%=h part.created_by.login %></td>
+	    <td><%=h part.updated_by.login %></td>
+	    <td><%= link_to 'Show', part %></td>
+	    <td><%= link_to 'Edit', edit_part_path(part) %></td>
+	    <td><%= link_to 'Destroy', part, :confirm => 'Are you sure?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+</div>
+
+<br />
+
+<%= link_to 'New part', new_part_path %>
