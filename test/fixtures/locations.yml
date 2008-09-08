@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  company_id: 1
+  line1: MyString
+  line2: MyString
+  city: MyString
+  state: MyString
+  pin: MyString
+  country: MyString
+
+two:
+  company_id: 1
+  line1: MyString
+  line2: MyString
+  city: MyString
+  state: MyString
+  pin: MyString
+  country: MyString

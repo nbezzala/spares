@@ -1,30 +1,58 @@
 <h1>New company</h1>
 
-<% form_for(@company) do |f| %>
-  <%= f.error_messages %>
+<% form_for(@company) do |form| %>
+  <%= form.error_messages %>
 
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= form.label :name %><br />
+    <%= form.text_field :name %>
   </p>
   <p>
-    <%= f.label :website %><br />
-    <%= f.text_field :website %>
+    <%= form.label :website %><br />
+    <%= form.text_field :website %>
   </p>
   <p>
-    <%= f.label :company_type %><br />
-    <%= f.text_field :company_type %>
+    <%= form.label :company_type %><br />
+    <%= form.text_field :company_type %>
   </p>
   <p>
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
+    <%= form.label :status %><br />
+    <%= form.text_field :status %>
   </p>
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= form.label :description %><br />
+    <%= form.text_area :description %>
   </p>
+
+  <% fields_for :location do |f| %>
+	    <p>
+	    <%= f.label :line1 %><br />
+	    <%= f.text_field :line1 %>
+	  </p>
+	  <p>
+	    <%= f.label :line2 %><br />
+	    <%= f.text_field :line2 %>
+	  </p>
+	  <p>
+	    <%= f.label :city %><br />
+	    <%= f.text_field :city %>
+	  </p>
+	  <p>
+	    <%= f.label :state %><br />
+	    <%= f.text_field :state %>
+	  </p>
+	  <p>
+	    <%= f.label :pin %><br />
+	    <%= f.text_field :pin %>
+	  </p>
+	  <p>
+	    <%= f.label :country %><br />
+	    <%= f.text_field :country %>
+	  </p>
+	<% end %>
+
   <p>
-    <%= f.submit "Create" %>
+    <%= form.submit "Create" %>
   </p>
 <% end %>
 

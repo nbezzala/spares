@@ -30,6 +30,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new.xml
   def new
     @company = Company.new
+    @location = Location.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,8 +46,10 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.xml
   def create
+    
     @company = Company.new(params[:company])
-
+    @company.location = Location.new(params[:location])
+    
     @company.created_by = @current_user
     @company.updated_by = @current_user
 
@@ -66,7 +69,8 @@ class CompaniesController < ApplicationController
   # PUT /companies/1.xml
   def update
     @company = Company.find(params[:id])
-
+#    @company.location = Location.find(@company.location.id)
+    
     @company.updated_by = @current_user
 
     respond_to do |format|
