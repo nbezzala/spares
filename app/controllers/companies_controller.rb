@@ -48,6 +48,8 @@ class CompaniesController < ApplicationController
     
     @company = Company.new(params[:company])
     @company.location = Location.new(params[:location])
+
+    @company.status = "New"
     
     @company.created_by = @current_user
     @company.updated_by = @current_user
