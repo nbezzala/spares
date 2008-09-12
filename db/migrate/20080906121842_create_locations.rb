@@ -1,7 +1,6 @@
 class CreateLocations < ActiveRecord::Migration
   def self.up
     create_table :locations do |t|
-      t.integer :company_id
       t.string :line1, :limit => 100
       t.string :line2, :limit => 100
       t.string :city, :limit => 100
