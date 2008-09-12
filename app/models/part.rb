@@ -10,4 +10,6 @@ class Part < ActiveRecord::Base
     :class_name=> 'User',
     :foreign_key => 'updated_by'
     
+  validates_presence_of :category 
+    
 end

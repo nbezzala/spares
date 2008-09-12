@@ -9,15 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080910132951) do
-
-  create_table "attributes", :force => true do |t|
-    t.text     "name"
-    t.text     "type"
-    t.text     "unit_of_measurement"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20080908085642) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -43,20 +35,12 @@ ActiveRecord::Schema.define(:version => 20080910132951) do
   end
 
   create_table "locations", :force => true do |t|
-    t.integer  "company_id", :limit => 11
     t.string   "line1",      :limit => 100
     t.string   "line2",      :limit => 100
     t.string   "city",       :limit => 100
     t.string   "state",      :limit => 50
     t.string   "pin",        :limit => 10
     t.string   "country",    :limit => 50
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "part_attributes", :force => true do |t|
-    t.integer  "part_id_id",      :limit => 11
-    t.integer  "attribute_id_id", :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end
