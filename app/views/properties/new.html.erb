@@ -1,0 +1,23 @@
+<h1>New property</h1>
+
+<% form_for(@property) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_area :name %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_area :type %>
+  </p>
+  <p>
+    <%= f.label :measurement_unit %><br />
+    <%= f.text_area :measurement_unit %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', properties_path %>

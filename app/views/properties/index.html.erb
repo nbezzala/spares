@@ -1,0 +1,24 @@
+<h1>Listing properties</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Measurement unit</th>
+  </tr>
+
+<% for property in @properties %>
+  <tr>
+    <td><%=h property.name %></td>
+    <td><%=h property.type %></td>
+    <td><%=h property.measurement_unit %></td>
+    <td><%= link_to 'Show', property %></td>
+    <td><%= link_to 'Edit', edit_property_path(property) %></td>
+    <td><%= link_to 'Destroy', property, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New property', new_property_path %>

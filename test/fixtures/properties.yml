@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyText
+  type: MyText
+  measurement_unit: MyText
+
+two:
+  name: MyText
+  type: MyText
+  measurement_unit: MyText

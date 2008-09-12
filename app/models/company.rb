@@ -1,4 +1,6 @@
 class Company < ActiveRecord::Base
+
+  validates_presence_of :name 
   
   belongs_to :created_by,
     :class_name => 'User',

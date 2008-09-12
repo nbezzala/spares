@@ -45,13 +45,21 @@ class PartsController < ApplicationController
   # POST /parts
   # POST /parts.xml
   def create
+
     @part = Part.new(params[:part])
+    @property = Property.new(params[:property])
+    @part.part_properties.new(:part => @part, :property => @property)
+    
 
     @part.created_by = @current_user
     @part.updated_by = @current_user
 
     respond_to do |format|
-      if @part.save
+      if @part.save && @property.save 
+  
+
+        @part_property.save
+
         flash[:notice] = 'Part was successfully created.'
         format.html { redirect_to(@part) }
         format.xml  { render :xml => @part, :status => :created, :location => @part }

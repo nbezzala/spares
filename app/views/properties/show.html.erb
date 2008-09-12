@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @property.name %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%=h @property.type %>
+</p>
+
+<p>
+  <b>Measurement unit:</b>
+  <%=h @property.measurement_unit %>
+</p>
+
+
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>

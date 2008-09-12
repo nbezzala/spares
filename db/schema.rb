@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080908085642) do
+ActiveRecord::Schema.define(:version => 20080912090249) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -45,12 +45,27 @@ ActiveRecord::Schema.define(:version => 20080908085642) do
     t.datetime "updated_at"
   end
 
+  create_table "part_properties", :force => true do |t|
+    t.integer  "part_id",     :limit => 11
+    t.integer  "property_id", :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "parts", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "category_id", :limit => 11
     t.integer  "created_by",  :limit => 11
     t.integer  "updated_by",  :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "properties", :force => true do |t|
+    t.text     "name"
+    t.text     "type"
+    t.text     "measurement_unit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
